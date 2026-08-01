@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Guide — ID Card Details</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FFFBF5;
+    --ink:#1c1a17;
+    --orange:#FF6B1A;
+    --orange-soft:#FFE4D2;
+    --line:#EAE3D7;
+    --muted:#8a8478;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Nunito', sans-serif;
+    line-height:1.5;
+  }
+  .display{font-family:'Quicksand', sans-serif;}
+
+  header.hero{
+    padding:56px 6vw 40px;
+    text-align:center;
+    max-width:720px;
+    margin:0 auto;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--orange-soft); color:var(--orange);
+    font-weight:700; font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+    padding:6px 14px; border-radius:100px; margin-bottom:20px;
+  }
+  h1.title{
+    font-family:'Quicksand', sans-serif;
+    font-size:clamp(2.2rem, 6vw, 3.4rem);
+    font-weight:700;
+    margin:0 0 14px;
+    color:var(--ink);
+  }
+  h1.title .accent{color:var(--orange);}
+  h2.sub{
+    font-family:'Quicksand', sans-serif;
+    font-weight:600;
+    font-size:1.3rem;
+    margin:0 0 12px;
+    color:var(--ink);
+  }
+  p.lede{
+    color:var(--muted);
+    font-size:1rem;
+    margin:0 auto;
+    max-width:440px;
+  }
+
+  main{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 6vw 80px;
+  }
+
+  form{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:48px 56px;
+    box-shadow: 0 20px 50px -30px rgba(28,26,23,0.18);
+  }
+  @media (max-width:600px){
+    form{padding:32px 24px;}
+  }
+
+  .field-group{margin-bottom:22px;}
+
+  label{
+    display:block;
+    font-weight:700;
+    font-size:14px;
+    color:var(--ink);
+    margin-bottom:7px;
+  }
+
+  input[type=text], input[type=email], input[type=tel], input[type=url], textarea{
+    width:100%;
+    background:var(--paper);
+    border:1.5px solid var(--line);
+    border-radius:12px;
+    color:var(--ink);
+    font-family:'Nunito', sans-serif;
+    font-size:1rem;
+    padding:12px 14px;
+    outline:none;
+    transition:border-color .2s ease, background .2s ease;
+  }
+  textarea{resize:vertical; min-height:70px;}
+  input::placeholder, textarea::placeholder{color:#b7b0a2;}
+  input:focus, textarea:focus{border-color:var(--orange); background:#fff;}
+
+  .photo-drop{
+    border:1.5px dashed var(--line);
+    border-radius:16px;
+    padding:20px;
+    display:flex; align-items:center; gap:16px;
+    cursor:pointer;
+    transition:border-color .2s ease;
+  }
+  .photo-drop:hover{border-color:var(--orange);}
+  .photo-drop input{display:none;}
+  .photo-preview{
+    width:64px; height:64px; border-radius:12px;
+    background:var(--orange-soft);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden; flex-shrink:0;
+    color:var(--orange); font-size:22px;
+  }
+  .photo-preview img{width:100%; height:100%; object-fit:cover;}
+  .photo-text{font-size:14px; font-weight:600; color:var(--muted);}
+  .photo-text span.fname{color:var(--orange); display:block; margin-top:2px; font-weight:700;}
+
+  .submit-btn{
+    margin-top:8px;
+    width:100%;
+    background:var(--orange);
+    color:#fff;
+    border:none;
+    border-radius:14px;
+    padding:16px 28px;
+    font-family:'Quicksand', sans-serif;
+    font-weight:700;
+    font-size:16px;
+    cursor:pointer;
+    transition:background .2s ease, transform .15s ease;
+  }
+  .submit-btn:hover{background:#e85f14;}
+  .submit-btn:active{transform:scale(.99);}
+  .submit-btn:disabled{opacity:.55; cursor:progress;}
+
+  .error-msg{color:#d1441c; font-size:13px; font-weight:600; margin-top:10px; min-height:16px; text-align:center;}
+
+  .success-panel{
+    display:none;
+    text-align:center;
+    padding:30px 20px;
+  }
+  .success-panel.show{display:block;}
+  .tick{
+    width:56px; height:56px; margin:0 auto 18px;
+    border-radius:50%;
+    background:var(--orange); display:flex; align-items:center; justify-content:center;
+  }
+  .tick svg{width:26px; height:26px;}
+  .success-panel h3{margin:0 0 8px; font-family:'Quicksand',sans-serif; font-size:1.3rem;}
+  .success-panel p{margin:0; color:var(--muted); font-size:.95rem;}
+
+  footer{
+    text-align:center;
+    padding:30px 6vw 50px;
+    font-size:13px;
+    color:var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="eyebrow">Printing Press</span>
+  <h1 class="title">Color <span class="accent">Guide</span></h1>
+  <h2 class="sub">ID Card — Filling Details</h2>
+  <p class="lede">Fill in your details and upload a photo below — we'll take it from there and design your ID card for you.</p>
+</header>
+
+<main>
+  <form id="idForm">
+
+    <div class="field-group">
+      <label for="name">Full Name</label>
+      <input type="text" id="name">
+    </div>
+
+    <div class="field-group">
+      <label for="designation">Job Title / Role</label>
+      <input type="text" id="designation">
+    </div>
+
+    <div class="field-group">
+      <label for="department">Department</label>
+      <input type="text" id="department">
+    </div>
+
+    <div class="field-group">
+      <label for="idnumber">ID / Employee Number</label>
+      <input type="text" id="idnumber">
+    </div>
+
+    <div class="field-group">
+      <label for="company">Company / Organisation Name</label>
+      <input type="text" id="company">
+    </div>
+
+    <div class="field-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone">
+    </div>
+
+    <div class="field-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email">
+    </div>
+
+    <div class="field-group">
+      <label for="bloodgroup">Blood Group</label>
+      <input type="text" id="bloodgroup">
+    </div>
+
+    <div class="field-group">
+      <label for="address">Address</label>
+      <textarea id="address"></textarea>
+    </div>
+
+    <div class="field-group">
+      <label for="emergency">Emergency Contact</label>
+      <input type="text" id="emergency">
+    </div>
+
+    <div class="field-group">
+      <label>Upload Your Photo</label>
+      <div class="photo-drop" id="photoDrop">
+        <div class="photo-preview" id="photoPreview">📷</div>
+        <div class="photo-text">
+          Tap to upload a passport-size photo
+          <span class="fname" id="photoName"></span>
+        </div>
+        <input type="file" id="photo" accept="image/*">
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label for="notes">Anything else?</label>
+      <textarea id="notes"></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn" id="submitBtn">Submit My Details</button>
+    <div class="error-msg" id="errorMsg"></div>
+
+    <div class="success-panel" id="successPanel">
+      <div class="tick">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h3>You're all set!</h3>
+      <p>Thanks — we've received your details and photo. Our team will design your ID card and reach out to you soon.</p>
+    </div>
+  </form>
+</main>
+
+<footer>Color Guide · Kerala, India</footer>
+
+<script>
+  // ---- CONFIG: paste your deployed Google Apps Script Web App URL here ----
+  const SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+  const $ = id => document.getElementById(id);
+
+  $('photoDrop').addEventListener('click', () => $('photo').click());
+  $('photo').addEventListener('change', () => {
+    const file = $('photo').files[0];
+    if(!file) return;
+    $('photoName').textContent = file.name;
+    const reader = new FileReader();
+    reader.onload = () => {
+      $('photoPreview').innerHTML = `<img src="${reader.result}" alt="preview">`;
+    };
+    reader.readAsDataURL(file);
+  });
+
+  function fileToBase64(file){
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  $('idForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const err = $('errorMsg');
+    err.textContent = '';
+
+    const btn = $('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const payload = {
+      name: $('name').value.trim(),
+      designation: $('designation').value.trim(),
+      department: $('department').value.trim(),
+      idnumber: $('idnumber').value.trim(),
+      company: $('company').value.trim(),
+      phone: $('phone').value.trim(),
+      email: $('email').value.trim(),
+      bloodgroup: $('bloodgroup').value.trim(),
+      address: $('address').value.trim(),
+      emergency: $('emergency').value.trim(),
+      notes: $('notes').value.trim(),
+      photoBase64: '',
+      photoFileName: '',
+      photoMimeType: ''
+    };
+
+    try{
+      if($('photo').files.length){
+        const file = $('photo').files[0];
+        payload.photoBase64 = await fileToBase64(file);
+        payload.photoFileName = file.name;
+        payload.photoMimeType = file.type;
+      }
+
+      if(SCRIPT_URL.startsWith('PASTE_')){
+        console.warn('SCRIPT_URL not configured — showing success without sending. See setup notes.');
+      } else {
+        fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {'Content-Type': 'text/plain;charset=utf-8'},
+          body: JSON.stringify(payload)
+        }).catch(() => { /* silently ignore */ });
+      }
+
+      $('idForm').querySelectorAll('.field-group, button').forEach(el => el.style.display = 'none');
+      $('successPanel').classList.add('show');
+
+    } catch(ex){
+      err.textContent = 'Something went wrong sending your details. Please try again.';
+      btn.disabled = false;
+      btn.textContent = 'Submit My Details';
+    }
+  });
+</script>
+</body>
+</html>
